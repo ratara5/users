@@ -1,0 +1,12 @@
+{
+    "plants":[
+        {
+            "id":1,
+            "name":"Aloe"
+        },
+        {
+            "id":2,
+            "name":"Nopal"
+        }
+    ]
+}

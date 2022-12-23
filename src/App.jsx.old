@@ -1,0 +1,31 @@
+//Contiene llamada a Componente User
+import React, {useState, useEffect} from 'react';
+
+import User from "./components/User";
+const handleSelectUser=(userId)=>{
+  console.log("User selected: ", userId);
+}
+const App=()=>{
+  const [users, setUsers]=useState();
+
+  useEffect(()=>{
+    async function getUsers(){
+      const result=await fetch('https://jsonplaceholder.typicode.com/users');
+      const response=await result.json();
+      setUsers(response);
+    }
+
+    getUsers();
+
+  },[]);
+  console.log(users);
+  console.log(typeof(users))
+
+  return(
+    <div>
+      {users && users.length>0 ? users.map((user) => <User key={user.id} {...user} onClick={handleSelectUser}/>) : null}
+    </div>
+  )
+}
+
+export default App
